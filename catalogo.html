@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Catálogo - Unite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], brand: ['Outfit', 'sans-serif'] },
+                    colors: { unite: { blue: '#4285F4', red: '#EA4335', yellow: '#FBBC05', green: '#34A853' } }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #000; color: white; -webkit-tap-highlight-color: transparent; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .glass-panel { 
+            background: rgba(20, 20, 20, 0.9); 
+            backdrop-filter: blur(20px); 
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+        }
+
+        .glass-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover { border-color: rgba(255,255,255,0.2); background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%); }
+        
+        /* Animación Menú Móvil */
+        #mobile-menu { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .menu-open { transform: translateX(0); }
+        .menu-closed { transform: translateX(100%); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Nav -->
+    <nav class="fixed w-full z-50 top-0 glass-panel">
+        <div class="px-4 py-3 md:px-6 md:py-4 flex justify-between items-center max-w-7xl mx-auto">
+            <!-- Logo Unite (Colores Corregidos) -->
+            <a href="index.html" class="text-xl md:text-2xl font-brand font-bold tracking-tighter hover:scale-105 transition">
+                <span class="text-unite-blue">U</span><span class="text-unite-red">n</span><span class="text-unite-yellow">i</span><span class="text-unite-green">t</span><span class="text-unite-blue">e</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex gap-6 text-sm font-medium text-gray-300">
+                <a href="index.html" class="hover:text-white">Inicio</a>
+                <a href="#" class="text-white font-bold">Catálogo</a>
+                <a href="gamers.html" class="hover:text-unite-green">Gamers</a>
+                <a href="condiciones.html" class="hover:text-unite-blue">Info/Legal</a>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex gap-3 items-center">
+                 <button id="cart-trigger" class="relative p-2 bg-white/10 rounded-full hover:bg-white/20 transition group">
+                    <i data-lucide="shopping-bag" class="w-5 h-5 text-white group-hover:text-unite-green transition-colors"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-unite-red text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full hidden">0</span>
+                </button>
+                <button id="menu-btn" class="md:hidden p-2 rounded-full bg-white/10 text-white"><i data-lucide="menu" class="w-5 h-5"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menú Móvil Pro (Tecnológico) -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl menu-closed flex flex-col justify-center px-8 space-y-6 md:hidden">
+        <div class="absolute top-5 right-5"><button id="close-menu" class="p-2 bg-white/10 rounded-full text-white"><i data-lucide="x" class="w-6 h-6"></i></button></div>
+        
+        <div class="text-center mb-8">
+             <span class="text-3xl font-brand font-bold tracking-tighter">
+                <span class="text-unite-blue">U</span><span class="text-unite-red">n</span><span class="text-unite-yellow">i</span><span class="text-unite-green">t</span><span class="text-unite-blue">e</span>
+            </span>
+        </div>
+
+        <a href="index.html" class="glass-card p-4 rounded-xl flex items-center gap-4 text-xl font-bold hover:bg-white/10 transition border-l-4 border-transparent hover:border-unite-blue">
+            <div class="p-2 bg-unite-blue/20 rounded-lg"><i data-lucide="home" class="text-unite-blue w-6 h-6"></i></div> Inicio
+        </a>
+        <a href="catalogo.html" class="glass-card p-4 rounded-xl flex items-center gap-4 text-xl font-bold border-l-4 border-white bg-white/5">
+            <div class="p-2 bg-white/20 rounded-lg"><i data-lucide="shopping-bag" class="text-white w-6 h-6"></i></div> Catálogo
+        </a>
+        <a href="gamers.html" class="glass-card p-4 rounded-xl flex items-center gap-4 text-xl font-bold hover:bg-white/10 transition border-l-4 border-transparent hover:border-unite-green">
+            <div class="p-2 bg-unite-green/20 rounded-lg"><i data-lucide="gamepad-2" class="text-unite-green w-6 h-6"></i></div> Gamers
+        </a>
+        <a href="wwu.html" class="glass-card p-4 rounded-xl flex items-center gap-4 text-xl font-bold hover:bg-white/10 transition border-l-4 border-transparent hover:border-unite-yellow">
+            <div class="p-2 bg-unite-yellow/20 rounded-lg"><i data-lucide="briefcase" class="text-unite-yellow w-6 h-6"></i></div> W.W.U
+        </a>
+        <a href="condiciones.html" class="glass-card p-4 rounded-xl flex items-center gap-4 text-xl font-bold hover:bg-white/10 transition border-l-4 border-transparent hover:border-unite-red">
+            <div class="p-2 bg-unite-red/20 rounded-lg"><i data-lucide="info" class="text-unite-red w-6 h-6"></i></div> Info & Legal
+        </a>
+    </div>
+
+    <!-- Filtros -->
+    <div class="fixed top-[60px] md:top-[72px] w-full z-40 bg-black/90 backdrop-blur-md border-b border-white/5 py-3">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
+            <div class="relative w-full md:w-96">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                <input type="text" id="search-input" placeholder="Buscar..." class="w-full bg-white/10 border border-white/10 rounded-xl py-2 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-unite-blue transition-all placeholder-gray-500">
+            </div>
+            <div class="flex gap-2 overflow-x-auto hide-scroll w-full md:w-auto pb-1" id="filters-container">
+                <button class="filter-pill active bg-white text-black px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition hover:scale-105" data-cat="all">Todo</button>
+                <button class="filter-pill bg-white/10 text-gray-300 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-white/10 hover:bg-white/20 transition hover:border-unite-blue" data-cat="Smartwatch">Relojes</button>
+                <button class="filter-pill bg-white/10 text-gray-300 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-white/10 hover:bg-white/20 transition hover:border-unite-red" data-cat="Audio">Audio</button>
+                <button class="filter-pill bg-white/10 text-gray-300 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-white/10 hover:bg-white/20 transition hover:border-unite-yellow" data-cat="Carga">Carga</button>
+                <button class="filter-pill bg-white/10 text-gray-300 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-white/10 hover:bg-white/20 transition hover:border-unite-green" data-cat="Accesorios">Accesorios</button>
+                <button class="filter-pill bg-white/10 text-gray-300 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-white/10 hover:bg-white/20 transition hover:text-white" data-cat="Hogar">Hogar</button>
+                <button class="filter-pill bg-white/10 text-gray-300 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-white/10 hover:bg-white/20 transition hover:text-white" data-cat="Juguetes">Juguetes</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="pt-[180px] md:pt-[160px] px-4 pb-20 max-w-7xl mx-auto w-full flex-grow">
+        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6"></div>
+        <div id="empty-msg" class="hidden flex flex-col items-center justify-center py-20 text-gray-500">
+            <i data-lucide="search-x" class="w-12 h-12 mb-3 opacity-50"></i>
+            <p>No encontrado.</p>
+        </div>
+    </main>
+
+    <!-- Carrito -->
+    <div id="cart-overlay" class="fixed inset-0 z-[90] bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300"></div>
+    
+    <div id="cart-panel" class="fixed inset-x-0 bottom-0 md:top-0 md:left-auto md:right-0 md:w-[400px] md:h-full z-[100] bg-[#111] md:border-l border-t md:border-t-0 border-white/10 shadow-2xl flex flex-col max-h-[85vh] md:max-h-full transform translate-y-full md:translate-y-0 md:translate-x-full transition-transform duration-300 rounded-t-3xl md:rounded-none">
+        <div class="p-4 border-b border-white/10 flex justify-between items-center bg-white/5 backdrop-blur-md rounded-t-3xl md:rounded-none">
+            <h3 class="font-bold text-lg flex items-center gap-2"><i data-lucide="shopping-cart" class="w-5 h-5 text-unite-green"></i> Tu Carrito</h3>
+            <button id="close-cart" class="p-2 bg-white/5 rounded-full hover:bg-white/20 transition"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <div id="cart-items" class="flex-grow overflow-y-auto p-4 space-y-3"></div>
+        <div class="p-5 bg-black/50 border-t border-white/10 pb-8 md:pb-5 space-y-4">
+            <div class="flex justify-between items-end">
+                <span class="text-gray-400 text-sm">Total estimado</span>
+                <span id="cart-total" class="font-bold text-2xl text-white">$0</span>
+            </div>
+            <button id="checkout-btn" class="w-full py-4 bg-unite-green hover:bg-green-600 text-black font-bold rounded-xl flex justify-center items-center gap-2 active:scale-95 transition shadow-lg">
+                <i data-lucide="message-circle" class="w-5 h-5"></i> Pedir por WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // === BASE DE DATOS REAL (ACTUALIZADA) ===
+        const products = [
+            // Apple
+            { id: 'sw-s10-nike', name: 'Apple Watch S10 Nike (unidad)', price: 799, category: 'Smartwatch', img: 'https://i.imgur.com/placehold.png', desc: 'Promo: 2 por $1299. Estilo deportivo.', badge: 'Promo' },
+            { id: 'sw-s10-hermes', name: 'Apple Watch S10 Hermes (unidad)', price: 799, category: 'Smartwatch', img: 'https://i.imgur.com/placehold.png', desc: 'Promo: 2 por $1299. Edición lujo.', badge: 'Promo' },
+            { id: 'sw-ultra2', name: 'Apple Watch Ultra 2 Black (unidad)', price: 799, category: 'Smartwatch', img: 'https://i.imgur.com/placehold.png', desc: 'Promo: 2 por $1299. Resistente.', badge: 'Promo' },
+            { id: 'kit-blanca', name: 'Kit Apple Caja Blanca', price: 1150, category: 'Smartwatch', img: 'https://i.imgur.com/placehold.png', badge: 'Kit' },
+            { id: 'kit-nike', name: 'Kit Apple Nike', price: 850, category: 'Smartwatch', img: 'https://i.imgur.com/placehold.png', badge: 'Kit' },
+            { id: 'ap-pencil', name: 'Pencil OEM', price: 249, category: 'Apple', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'ap-magsafe-bat', name: 'Batería MagSafe con Pantalla', price: 399, category: 'Apple', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'ap-wallet', name: 'Wallet MagSafe de Piel', price: 299, category: 'Apple', img: 'https://i.imgur.com/placehold.png' },
+
+            // Smartwatch
+            { id: 'sw-power', name: 'Smart Watch Power G-TIDE', price: 1199, category: 'Smartwatch', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'sw-q1', name: 'Smart Watch Q1 G-TIDE', price: 549, category: 'Smartwatch', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'sw-s5', name: 'Smart Watch S5 Pro G-TIDE', price: 999, category: 'Smartwatch', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'sw-romance', name: 'Smart Watch Romance G-TIDE', price: 999, category: 'Smartwatch', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'sw-r8', name: 'Smart Watch R8 Pro G-TIDE', price: 1299, category: 'Smartwatch', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'sw-r6', name: 'Smart Watch R6 Pro G-TIDE', price: 1299, category: 'Smartwatch', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'sw-hw', name: 'HW Ultra 2 Call (Reloj TikTok)', price: 1299, category: 'Smartwatch', img: 'https://i.imgur.com/placehold.png', badge: 'Viral' },
+
+            // Audio
+            { id: 'au-max-orig', name: 'AirPods Max (Calidad Original)', price: 2400, category: 'Audio', img: 'https://i.imgur.com/placehold.png', badge: 'Premium' },
+            { id: 'au-max-11', name: 'AirPods Max (Calidad 1.1)', price: 749, category: 'Audio', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'au-pro2', name: 'AirPods Pro 2G (Calidad Original)', price: 999, category: 'Audio', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'au-4g', name: 'AirPods 4G (Calidad Original)', price: 899, category: 'Audio', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'au-3g', name: 'AirPods 3G (Calidad Original)', price: 800, category: 'Audio', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'au-kids', name: 'AirPods Pro Diseños Niños', price: 249, category: 'Audio', img: 'https://i.imgur.com/placehold.png', badge: 'Promo' },
+            { id: 'au-oem', name: 'AirPods OEM (Pro 2G, 4G, 3G)', price: 349, category: 'Audio', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'au-beats', name: 'Beats Fit Pro', price: 399, category: 'Audio', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'au-mic', name: 'Micrófono Lavalier (Lightning)', price: 199, category: 'Audio', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'au-pb', name: 'Audifonos Power Bank Cables', price: 229, category: 'Audio', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'au-samsung', name: 'Samsung Buds OEM (Promo 2x1)', price: 450, category: 'Audio', img: 'https://i.imgur.com/placehold.png', desc: 'Precio por pieza, aprovecha el 2x1.' },
+            { id: 'au-future', name: 'G-TIDE Earpods Future', price: 499, category: 'Audio', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'au-l32', name: 'G-TIDE Audífonos L32', price: 279, category: 'Audio', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'au-ac01', name: 'G-TIDE Audífonos AC01', price: 259, category: 'Audio', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'au-c1', name: 'Audífonos Diadema C1 Lite', price: 329, category: 'Audio', img: 'https://i.imgur.com/placehold.png' },
+
+            // Accesorios & Carga
+            { id: 'ac-force', name: 'Tenis Air Force 1 (Premium)', price: 999, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'ac-jersey', name: 'Adidas Jersey Mexico', price: 850, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'ac-zoom', name: 'Zoom para Celular', price: 99, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'ac-selfie', name: 'Selfie Stick y Soporte', price: 129, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'ac-rasura-vin', name: 'Rasuradora Vintage', price: 169, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'ac-rasura-elec', name: 'Rasuradora Eléctrica', price: 249, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'ch-multi', name: 'Multicontacto 1Hora', price: 189, category: 'Carga', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'ac-ext', name: 'Extensión 10 Metros', price: 179, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'ac-encen', name: 'Encendedor Eléctrico', price: 149, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'ac-cepillo', name: 'Cepillo Secador de Cabello', price: 279, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'ac-llavero', name: 'Llavero Antirrobo', price: 139, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'ac-sop-mag', name: 'Soporte Magnético 1Hora', price: 99, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'ac-sop-retro', name: 'Soporte Cel Retrovisor', price: 99, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png' },
+            { id: 'ac-case', name: 'Lote 10 Case de Silicón', price: 49, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png', desc: 'Precio por pieza.' },
+            { id: 'ac-mochila', name: 'Lote 5 Mochilas', price: 199, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png', desc: 'Precio por set.' },
+            { id: 'ac-mochila-agua', name: 'Lote 25 Mochilas Contra Agua', price: 49, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png', desc: 'Precio por pieza en lote.' },
+            { id: 'ac-oceano5', name: 'Oceano Pack 5L', price: 149, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png', desc: 'Impermeable.' },
+            { id: 'ac-oceano10', name: 'Oceano Pack 10L', price: 199, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png', desc: 'Gran capacidad.' },
+            { id: 'ac-cartera', name: 'Cartera y Bolsa Coach 1.1', price: 399, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png', desc: 'Elegancia.' },
+            { id: 'ac-wallet', name: 'Wallet MagSafe Piel', price: 299, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png', desc: 'Para iPhone.' },
+            { id: 'ac-pencil', name: 'Pencil OEM', price: 249, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png', desc: 'Para iPad.' },
+            { id: 'ac-baofeng', name: 'Radios Baofeng (Par)', price: 399, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png', desc: 'Largo alcance.' },
+            { id: 'ac-lentes', name: 'Lentes Inteligentes', price: 380, category: 'Accesorios', img: 'https://i.imgur.com/placehold.png', desc: 'Audio bluetooth.' },
+            { id: 'ch-bat', name: 'Batería MagSafe c/Pantalla', price: 399, category: 'Carga', img: 'https://i.imgur.com/placehold.png', desc: 'Carga inalámbrica.' },
+            { id: 'ch-pb', name: 'Power Bank 20,000 mAh G-TIDE', price: 549, category: 'Carga', img: 'https://i.imgur.com/placehold.png', desc: 'Mucha energía.' },
+            { id: 'ch-cubo20', name: 'Cubo 20W Tipo C', price: 80, category: 'Carga', img: 'https://i.imgur.com/placehold.png', desc: 'Carga rápida.' },
+
+            // Hogar
+            { id: 'ho-vent-4', name: 'Caja 4 Ventiladores 3en1', price: 2500, category: 'Hogar', img: 'https://i.imgur.com/placehold.png', desc: 'Sistema completo.' },
+            { id: 'ho-lamp', name: 'Lámpara Ventilador Techo', price: 299, category: 'Hogar', img: 'https://i.imgur.com/placehold.png', desc: 'Luz y aire.' },
+            { id: 'ho-foco', name: 'Cámara Foco 360', price: 349, category: 'Hogar', img: 'https://i.imgur.com/placehold.png', desc: 'Vigilancia.' },
+            { id: 'ho-vent-hum', name: 'Ventilador Humidificador', price: 289, category: 'Hogar', img: 'https://i.imgur.com/placehold.png', desc: 'Fresco.' },
+            { id: 'ho-humid', name: 'Humidificador Madera', price: 169, category: 'Hogar', img: 'https://i.imgur.com/placehold.png', desc: 'Aroma.' },
+            { id: 'ho-disp', name: 'Dispensador Agua LED', price: 129, category: 'Hogar', img: 'https://i.imgur.com/placehold.png', desc: 'Práctico.' },
+            { id: 'ho-tira', name: 'Tira LED RGB 5M', price: 139, category: 'Hogar', img: 'https://i.imgur.com/placehold.png', desc: 'Decoración.' },
+            { id: 'ho-tv', name: 'Tira LED para TV', price: 159, category: 'Hogar', img: 'https://i.imgur.com/placehold.png', desc: 'Ambiente.' },
+            { id: 'ho-aro', name: 'Aro Luz 12" RGB', price: 259, category: 'Hogar', img: 'https://i.imgur.com/placehold.png', desc: 'Video pro.' },
+            { id: 'ho-tac', name: 'Lámpara Táctica', price: 99, category: 'Hogar', img: 'https://i.imgur.com/placehold.png', desc: 'Potente.' },
+            { id: 'ho-vent-p', name: 'Ventilador Portátil', price: 189, category: 'Hogar', img: 'https://i.imgur.com/placehold.png', desc: 'Recargable.' },
+            { id: 'ho-stan', name: 'Termo Stanley Top', price: 299, category: 'Hogar', img: 'https://i.imgur.com/placehold.png', desc: 'Calidad.' },
+            { id: 'ho-yeti', name: 'Termo Yeti 20oz', price: 249, category: 'Hogar', img: 'https://i.imgur.com/placehold.png', desc: 'Resistente.' },
+            { id: 'ho-vaso', name: 'Vaso Brillo', price: 159, category: 'Hogar', img: 'https://i.imgur.com/placehold.png', desc: 'Estilo brillante.' },
+
+            // JUGUETES & GAMING
+            { id: 'ga-master', name: 'Game Master R36', price: 1100, category: 'Juguetes', img: 'https://i.imgur.com/placehold.png', desc: 'Consola retro.' },
+            { id: 'ga-combo', name: 'Combo Gamer 4en1', price: 599, category: 'Juguetes', img: 'https://i.imgur.com/placehold.png', desc: 'Kit PC.' },
+            { id: 'ga-stick', name: 'Game Stick 4K', price: 790, category: 'Juguetes', img: 'https://i.imgur.com/placehold.png', desc: 'Juegos TV.' },
+            { id: 'ga-pist', name: 'Pistola de Hidrogel', price: 349, category: 'Juguetes', img: 'https://i.imgur.com/placehold.png', desc: 'Orbeez.' },
+            { id: 'ga-lego', name: 'Lego Diseños', price: 79, category: 'Juguetes', img: 'https://i.imgur.com/placehold.png', desc: 'Bloques.' },
+            { id: 'ga-fig', name: 'Figura Súper Héroes', price: 159, category: 'Juguetes', img: 'https://i.imgur.com/placehold.png', desc: 'Colección.' },
+            { id: 'ga-reloj-cam', name: 'Reloj Infantil + Cámara Juguete', price: 149, category: 'Juguetes', img: 'https://i.imgur.com/placehold.png' }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('uniteCart')) || [];
+        const grid = document.getElementById('product-grid');
+        const cartCount = document.getElementById('cart-count');
+        const cartPanel = document.getElementById('cart-panel');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+
+        function render(cat = 'all', search = '') {
+            grid.innerHTML = '';
+            const filtered = products.filter(p => (cat === 'all' || p.category === cat) && p.name.toLowerCase().includes(search.toLowerCase()));
+
+            if(filtered.length === 0) {
+                document.getElementById('empty-msg').classList.remove('hidden');
+            } else {
+                document.getElementById('empty-msg').classList.add('hidden');
+            }
+
+            filtered.forEach(p => {
+                const el = document.createElement('div');
+                // OnClick: Ir al detalle del producto
+                el.onclick = (e) => {
+                    if (!e.target.closest('button')) { // Evitar conflicto con botón de añadir
+                        window.location.href = `producto.html?id=${p.id}`;
+                    }
+                };
+                
+                el.className = 'glass-card p-3 md:p-4 flex flex-col relative group active:scale-95 transition-transform rounded-2xl cursor-pointer product-item';
+                el.innerHTML = `
+                    ${p.badge ? `<span class="absolute top-3 left-3 bg-blue-500/20 text-blue-400 text-[10px] font-bold px-2 py-1 rounded border border-blue-500/30 z-10">${p.badge}</span>` : ''}
+                    <div class="aspect-square w-full bg-white/5 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                        <img src="${p.img}" class="w-full h-full object-contain p-2 group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/200x200/222/444?text=Unite'">
+                    </div>
+                    <div class="mt-auto">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-wide mb-1">${p.category}</p>
+                        <h3 class="text-xs md:text-sm font-bold text-white line-clamp-2 mb-2 h-10">${p.name}</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-white text-sm md:text-lg">$${p.price}</span>
+                            <button onclick="add('${p.id}')" class="w-8 h-8 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-200 transition shadow-lg z-20">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(el);
+            });
+            lucide.createIcons();
+        }
+
+        function resetFilters() {
+            document.getElementById('search-input').value = '';
+            document.querySelectorAll('.filter-pill').forEach(b => {
+                b.classList.remove('active', 'bg-white', 'text-black');
+                b.classList.add('bg-white/10', 'text-gray-300');
+            });
+            document.querySelector('.filter-pill[data-cat="all"]').classList.add('active', 'bg-white', 'text-black');
+            render('all');
+        }
+
+        // Carrito Logic
+        window.add = (id) => {
+            const p = products.find(x => x.id === id);
+            cart.push(p);
+            save(); renderCart();
+            // Feedback visual
+            const btn = document.getElementById('cart-trigger');
+            btn.classList.add('bg-unite-green', 'scale-110');
+            setTimeout(() => btn.classList.remove('bg-unite-green', 'scale-110'), 200);
+        };
+
+        function save() {
+            localStorage.setItem('uniteCart', JSON.stringify(cart));
+            cartCount.innerText = cart.length;
+            cartCount.classList.toggle('hidden', cart.length === 0);
+        }
+
+        function renderCart() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            if(cart.length === 0) cartItemsContainer.innerHTML = '<div class="text-center text-gray-500 text-sm py-10 flex flex-col items-center"><i data-lucide="shopping-cart" class="w-8 h-8 mb-2 opacity-50"></i>Carrito vacío</div>';
+            else {
+                cart.forEach((item, idx) => {
+                    total += item.price;
+                    const el = document.createElement('div');
+                    el.className = 'flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/5';
+                    el.innerHTML = `
+                        <div class="w-12 h-12 bg-black/50 rounded-lg flex-shrink-0 overflow-hidden flex items-center justify-center"><img src="${item.img}" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/50'"></div>
+                        <div class="flex-grow min-w-0"><p class="text-sm font-bold truncate text-white">${item.name}</p><p class="text-xs text-gray-400">$${item.price}</p></div>
+                        <button onclick="remove(${idx})" class="p-2 text-gray-500 hover:text-red-500 transition"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    `;
+                    cartItemsContainer.appendChild(el);
+                });
+            }
+            cartTotal.innerText = `$${total.toLocaleString()}`;
+            lucide.createIcons();
+        }
+
+        window.remove = (idx) => { cart.splice(idx, 1); save(); renderCart(); };
+
+        // Eventos Carrito UI
+        const openCart = () => { 
+            cartOverlay.classList.remove('hidden'); 
+            setTimeout(() => { 
+                cartOverlay.classList.remove('opacity-0'); 
+                if(window.innerWidth < 768) cartPanel.classList.remove('translate-y-full'); 
+                else cartPanel.classList.remove('translate-x-full'); 
+            }, 10); 
+            renderCart(); 
+        };
+        
+        const closeCartFn = () => {
+            if(window.innerWidth < 768) cartPanel.classList.add('translate-y-full'); 
+            else cartPanel.classList.add('translate-x-full');
+            cartOverlay.classList.add('opacity-0');
+            setTimeout(() => cartOverlay.classList.add('hidden'), 300);
+        };
+
+        document.getElementById('cart-trigger').addEventListener('click', openCart);
+        document.getElementById('close-cart').addEventListener('click', closeCartFn);
+        cartOverlay.addEventListener('click', closeCartFn);
+
+        // Menú Móvil
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('menu-closed');
+            mobileMenu.classList.toggle('menu-open');
+        }
+        menuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+
+        // Filtros
+        document.querySelectorAll('.filter-pill').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                if(e.currentTarget.tagName === 'A') return;
+                document.querySelectorAll('.filter-pill').forEach(b => { b.classList.remove('active', 'bg-white', 'text-black'); b.classList.add('bg-white/10', 'text-gray-300'); });
+                e.target.classList.remove('bg-white/10', 'text-gray-300'); e.target.classList.add('active', 'bg-white', 'text-black');
+                render(e.target.dataset.cat, document.getElementById('search-input').value);
+            });
+        });
+
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            render(document.querySelector('.filter-pill.active')?.dataset.cat || 'all', e.target.value);
+        });
+
+        document.getElementById('checkout-btn').addEventListener('click', () => {
+            if(cart.length === 0) return;
+            let msg = "¡Hola Unite! 🚀\nQuiero realizar este pedido:\n\n";
+            let t = 0;
+            cart.forEach(p => { msg += `• ${p.name} ($${p.price})\n`; t += p.price; });
+            msg += `\n*Total: $${t}*\n\nEspero detalles para el pago.`;
+            window.open(`https://wa.me/525574123521?text=${encodeURIComponent(msg)}`, '_blank');
+        });
+
+        // Init
+        save(); render();
+    </script>
+</body>
+</html>

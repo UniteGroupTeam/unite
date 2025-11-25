@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Trabajamos - Unite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+        }
+        .grade-badge {
+            display: inline-block; padding: 4px 12px; border-radius: 999px; font-weight: bold; font-size: 0.8rem; margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="fixed w-full z-50 top-0 glass-panel p-4">
+        <div class="flex justify-between items-center max-w-4xl mx-auto">
+            <a href="index.html" class="flex items-center gap-2 text-gray-300 hover:text-white">
+                <i data-lucide="arrow-left"></i> Volver
+            </a>
+            <h1 class="text-xl font-bold font-brand">Guía de Transparencia</h1>
+            <div class="w-8"></div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20 px-4 max-w-4xl mx-auto space-y-12">
+        
+        <!-- Intro -->
+        <div class="text-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Conoce lo que compras</h2>
+            <p class="text-gray-400">En Unite, la honestidad es clave. Aquí te explicamos exactamente qué significa cada condición.</p>
+        </div>
+
+        <!-- Sección: Seminuevos -->
+        <section>
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-2 text-blue-400">
+                <i data-lucide="smartphone"></i> Dispositivos Seminuevos
+            </h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <!-- Grado A -->
+                <div class="glass-card p-6 rounded-2xl border-t-4 border-green-500">
+                    <span class="grade-badge bg-green-500/20 text-green-400">Grado A</span>
+                    <h4 class="text-xl font-bold mb-2">Perfecto</h4>
+                    <ul class="text-sm text-gray-400 space-y-2 list-disc pl-4">
+                        <li>Estética 9.5/10 o 10/10.</li>
+                        <li>Sin golpes ni rayones visibles.</li>
+                        <li>Batería en estado óptimo.</li>
+                        <li>Funciona como nuevo.</li>
+                    </ul>
+                </div>
+                <!-- Grado B -->
+                <div class="glass-card p-6 rounded-2xl border-t-4 border-yellow-500">
+                    <span class="grade-badge bg-yellow-500/20 text-yellow-400">Grado B</span>
+                    <h4 class="text-xl font-bold mb-2">Bueno</h4>
+                    <ul class="text-sm text-gray-400 space-y-2 list-disc pl-4">
+                        <li>Estética 8/10 o 9/10.</li>
+                        <li>Ligeros signos de uso (micro rayones).</li>
+                        <li>100% Funcional garantizado.</li>
+                        <li>Mejor precio.</li>
+                    </ul>
+                </div>
+                <!-- Grado C -->
+                <div class="glass-card p-6 rounded-2xl border-t-4 border-red-500">
+                    <span class="grade-badge bg-red-500/20 text-red-400">Grado C</span>
+                    <h4 class="text-xl font-bold mb-2">Funcional</h4>
+                    <ul class="text-sm text-gray-400 space-y-2 list-disc pl-4">
+                        <li>Detalles estéticos visibles.</li>
+                        <li>Puede tener golpes o desgaste.</li>
+                        <li>Pantalla y funciones al 100%.</li>
+                        <li>El precio más bajo.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Calidades -->
+        <section>
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-2 text-purple-400">
+                <i data-lucide="tag"></i> Otras Calidades
+            </h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-card p-6 rounded-2xl">
+                    <h4 class="text-lg font-bold text-white mb-2">Calidad OEM</h4>
+                    <p class="text-sm text-gray-400 mb-2">"Original Equipment Manufacturer". Fabricado con los mismos estándares y materiales que el original, pero sin pagar la marca.</p>
+                    <p class="text-sm text-white font-medium">Beneficio: Calidad premium a precio justo.</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl">
+                    <h4 class="text-lg font-bold text-white mb-2">Calidad 1.1</h4>
+                    <p class="text-sm text-gray-400 mb-2">La mejor réplica del mercado. Atención al detalle en peso, materiales y funciones. Prácticamente indistinguible.</p>
+                    <p class="text-sm text-white font-medium">Beneficio: Lujo accesible.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Garantías y Envíos -->
+        <section class="glass-card p-8 rounded-3xl border border-white/10">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i data-lucide="shield-check" class="text-green-400"></i> Garantías</h3>
+                    <ul class="text-sm text-gray-400 space-y-3">
+                        <li>• <strong>7 días de garantía</strong> por defectos de fábrica en equipos.</li>
+                        <li>• No aplica en daños por agua, caídas o mal uso.</li>
+                        <li>• Se requiere empaque original para devoluciones.</li>
+                        <li>• Artículos "Sin Garantía" se especifican en la venta.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i data-lucide="truck" class="text-blue-400"></i> Envíos</h3>
+                    <ul class="text-sm text-gray-400 space-y-3">
+                        <li>• Envíos a todo México.</li>
+                        <li>• Costo de envío no incluido en devoluciones.</li>
+                        <li>• <strong>Seguro Opcional:</strong> 1.5% del valor (cubre robo/extravío).</li>
+                        <li>• Unite no se hace responsable tras entregar a paquetería.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

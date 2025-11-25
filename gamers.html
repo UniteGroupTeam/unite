@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Unite Gamers - Tu Arsenal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { background: #000; color: white; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+        .glass-panel { background: rgba(20, 20, 20, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .cyber-card { background: linear-gradient(180deg, rgba(20,20,20,0.8) 0%, rgba(5,5,5,0.9) 100%); border: 1px solid rgba(57, 255, 20, 0.15); box-shadow: 0 0 15px rgba(57, 255, 20, 0.05); transition: all 0.3s ease; }
+        @media (min-width: 768px) { .cyber-card:hover { transform: translateY(-10px); border-color: #39FF14; box-shadow: 0 0 30px rgba(57, 255, 20, 0.2); } }
+        .cyber-text { font-family: 'Orbitron', sans-serif; }
+        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+        .grid-bg { background-image: radial-gradient(rgba(57, 255, 20, 0.1) 1px, transparent 1px); background-size: 30px 30px; }
+        /* Menú Animación */
+        #mobile-menu { transition: transform 0.3s ease-in-out; }
+        .menu-closed { transform: translateX(100%); } .menu-open { transform: translateX(0); }
+    </style>
+</head>
+<body class="pb-10">
+    
+    <div class="fixed inset-0 grid-bg z-[-1] pointer-events-none opacity-50"></div>
+
+    <!-- Nav -->
+    <nav class="fixed w-full z-50 top-0 glass-panel">
+        <div class="px-4 py-3 md:px-6 md:py-4 flex justify-between items-center max-w-7xl mx-auto">
+            <a href="index.html" class="text-xl md:text-2xl font-bold tracking-widest text-white flex items-center gap-2">
+                <i data-lucide="arrow-left" class="md:hidden w-5 h-5 text-gray-400"></i> 
+                <span class="cyber-text">UNITE <span class="text-[#39FF14]">GAMERS</span></span>
+            </a>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
+                <a href="index.html" class="hover:text-white transition">Inicio</a>
+                <a href="catalogo.html" class="hover:text-white transition">Catálogo</a>
+                <a href="condiciones.html" class="hover:text-white transition">Info/Legal</a>
+            </div>
+            <div class="flex gap-3 items-center">
+                 <a href="https://discord.gg/Aq3TjM4tJT" target="_blank" class="bg-[#5865F2] hover:bg-[#4752C4] text-white px-4 py-2 rounded-lg text-xs md:text-sm font-bold transition flex items-center gap-2">
+                    <i data-lucide="message-square" class="w-4 h-4"></i> <span class="hidden md:inline">Discord</span>
+                </a>
+                <button id="menu-btn" class="md:hidden p-2 rounded-full bg-white/10 text-white"><i data-lucide="menu" class="w-5 h-5"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menú Móvil Pro -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl menu-closed flex flex-col justify-center px-8 space-y-6 md:hidden">
+        <div class="absolute top-5 right-5"><button id="close-menu" class="p-2 bg-white/10 rounded-full text-white"><i data-lucide="x" class="w-6 h-6"></i></button></div>
+        <div class="text-center mb-4"><span class="cyber-text text-2xl">UNITE <span class="text-[#39FF14]">GAMERS</span></span></div>
+        <a href="index.html" class="p-4 rounded-xl flex items-center gap-4 text-xl font-bold text-gray-300 hover:text-white border border-white/10"><i data-lucide="home"></i> Inicio</a>
+        <a href="catalogo.html" class="p-4 rounded-xl flex items-center gap-4 text-xl font-bold text-gray-300 hover:text-white border border-white/10"><i data-lucide="shopping-bag"></i> Catálogo</a>
+        <a href="condiciones.html" class="p-4 rounded-xl flex items-center gap-4 text-xl font-bold text-gray-300 hover:text-white border border-white/10"><i data-lucide="info"></i> Info & Legal</a>
+    </div>
+
+    <main class="pt-24 px-4 max-w-7xl mx-auto space-y-16 pb-20">
+        
+        <!-- Header -->
+        <div class="text-center py-10">
+            <h1 class="text-5xl md:text-7xl font-black cyber-text text-transparent bg-clip-text bg-gradient-to-r from-[#39FF14] to-emerald-600 tracking-wider mb-4">
+                ARSENAL DIGITAL
+            </h1>
+            <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                La forma más rápida y segura de conseguir tus juegos, skins y monedas. Todo a través de nuestro servidor de Discord.
+            </p>
+            <a href="https://discord.gg/Aq3TjM4tJT" class="inline-block mt-8 px-8 py-4 bg-[#39FF14] hover:bg-green-400 text-black font-black rounded-xl transition transform hover:scale-105 shadow-[0_0_20px_rgba(57,255,20,0.4)]">
+                ¡UNIRME AHORA!
+            </a>
+        </div>
+
+        <!-- ¿CÓMO FUNCIONA? -->
+        <section>
+            <h2 class="text-3xl font-bold text-center mb-10 cyber-text">¿CÓMO <span class="text-white/50">FUNCIONA?</span></h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Pasos -->
+                <div class="step-card p-6 rounded-2xl text-center hover:bg-white/5 transition">
+                    <div class="w-16 h-16 bg-[#5865F2]/20 rounded-full flex items-center justify-center mx-auto mb-4 text-[#5865F2]"><i data-lucide="message-circle" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-2">1. Únete al Servidor</h3><p class="text-sm text-gray-400">Accede a nuestra comunidad exclusiva.</p>
+                </div>
+                <div class="step-card p-6 rounded-2xl text-center hover:bg-white/5 transition">
+                    <div class="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-yellow-500"><i data-lucide="ticket" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-2">2. Abre un Ticket</h3><p class="text-sm text-gray-400">Ve al canal de soporte y crea un ticket.</p>
+                </div>
+                <div class="step-card p-6 rounded-2xl text-center hover:bg-white/5 transition">
+                    <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-green-500"><i data-lucide="shopping-cart" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-2">3. Pide tu Producto</h3><p class="text-sm text-gray-400">Dinos qué necesitas.</p>
+                </div>
+                <div class="step-card p-6 rounded-2xl text-center hover:bg-white/5 transition">
+                    <div class="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-purple-500"><i data-lucide="gamepad-2" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-2">4. ¡Recibe y Juega!</h3><p class="text-sm text-gray-400">Entrega rápida y segura.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid de Juegos -->
+        <section>
+            <h2 class="text-3xl font-bold text-center mb-10 cyber-text">NUESTRO <span class="text-white/50">STOCK</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Fortnite -->
+                <div class="cyber-card rounded-2xl overflow-hidden relative h-80 group cursor-pointer">
+                    <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-purple-900/10 to-transparent">
+                        <model-viewer src="https://cdn.jsdelivr.net/gh/PIXLTikTok/mis-modelos-3d@main/battle_bus.glb" class="w-full h-full" camera-controls disable-zoom auto-rotate style="background-color: transparent;"></model-viewer>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full bg-black/80 backdrop-blur-sm p-6 border-t border-white/10">
+                        <div class="flex justify-between items-center">
+                            <div><h3 class="text-2xl font-bold cyber-text">FORTNITE</h3><p class="text-sm text-gray-400">Pavos & Skins</p></div>
+                            <a href="https://discord.gg/Aq3TjM4tJT" class="bg-[#39FF14] text-black font-bold px-4 py-2 rounded-lg">VER</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Roblox -->
+                <div class="cyber-card rounded-2xl overflow-hidden relative h-80 group cursor-pointer border-red-500/20 shadow-red-500/5">
+                    <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-red-900/10 to-transparent">
+                        <model-viewer src="https://cdn.jsdelivr.net/gh/PIXLTikTok/mis-modelos-3d@main/roblox-noob.glb" class="w-full h-full" camera-controls disable-zoom auto-rotate style="background-color: transparent;"></model-viewer>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full bg-black/80 backdrop-blur-sm p-6 border-t border-white/10">
+                        <div class="flex justify-between items-center">
+                            <div><h3 class="text-2xl font-bold cyber-text">ROBLOX</h3><p class="text-sm text-gray-400">Robux (Gamepass/Grupo)</p></div>
+                            <a href="https://discord.gg/Aq3TjM4tJT" class="bg-red-500 text-white font-bold px-4 py-2 rounded-lg">VER</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Consolas -->
+                <div class="cyber-card rounded-2xl overflow-hidden relative h-80 group cursor-pointer border-blue-500/20 shadow-blue-500/5">
+                    <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-blue-900/10 to-transparent">
+                        <model-viewer src="https://cdn.jsdelivr.net/gh/PIXLTikTok/mis-modelos-3d@main/xbox_controller-black.glb" class="w-full h-full" camera-controls disable-zoom auto-rotate style="background-color: transparent;"></model-viewer>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full bg-black/80 backdrop-blur-sm p-6 border-t border-white/10">
+                        <div class="flex justify-between items-center">
+                            <div><h3 class="text-2xl font-bold cyber-text">CONSOLAS</h3><p class="text-sm text-gray-400">Xbox / PS / PC</p></div>
+                            <a href="https://discord.gg/Aq3TjM4tJT" class="bg-blue-500 text-white font-bold px-4 py-2 rounded-lg">VER</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        lucide.createIcons();
+        const menuBtn = document.getElementById('menu-btn');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        function toggleMenu() { mobileMenu.classList.toggle('menu-closed'); mobileMenu.classList.toggle('menu-open'); }
+        menuBtn.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+    </script>
+</body>
+</html>
