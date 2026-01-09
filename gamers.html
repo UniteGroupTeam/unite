@@ -2,150 +2,131 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Unite Gamers - Tu Arsenal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS | División Gaming</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;700&family=Rajdhani:wght@500;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'], tech: ['Rajdhani', 'sans-serif'] },
+                    colors: { nexus: { black: '#050505', green: '#39FF14', darkgreen: '#0f3310' } },
+                    backgroundImage: {
+                        'hex-grid': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMjBMITAgMEgyMFYyMEgwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDU3LDI1NSwyMCwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+')",
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        body { background: #000; color: white; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
-        .glass-panel { background: rgba(20, 20, 20, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .cyber-card { background: linear-gradient(180deg, rgba(20,20,20,0.8) 0%, rgba(5,5,5,0.9) 100%); border: 1px solid rgba(57, 255, 20, 0.15); box-shadow: 0 0 15px rgba(57, 255, 20, 0.05); transition: all 0.3s ease; }
-        @media (min-width: 768px) { .cyber-card:hover { transform: translateY(-10px); border-color: #39FF14; box-shadow: 0 0 30px rgba(57, 255, 20, 0.2); } }
-        .cyber-text { font-family: 'Orbitron', sans-serif; }
-        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
-        .grid-bg { background-image: radial-gradient(rgba(57, 255, 20, 0.1) 1px, transparent 1px); background-size: 30px 30px; }
-        /* Menú Animación */
-        #mobile-menu { transition: transform 0.3s ease-in-out; }
-        .menu-closed { transform: translateX(100%); } .menu-open { transform: translateX(0); }
+        body { background: #050505; color: white; }
+        .neon-text { text-shadow: 0 0 10px rgba(57, 255, 20, 0.5); }
+        .cyber-card {
+            background: linear-gradient(180deg, rgba(15, 51, 16, 0.4) 0%, rgba(0,0,0,0.8) 100%);
+            border: 1px solid rgba(57, 255, 20, 0.2);
+            position: relative; overflow: hidden; transition: all 0.3s ease;
+        }
+        .cyber-card:hover { border-color: #39FF14; box-shadow: 0 0 30px rgba(57, 255, 20, 0.1); transform: translateY(-5px); }
+        .cyber-btn {
+            background: #39FF14; color: black; font-family: 'Rajdhani'; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); transition: 0.2s;
+        }
+        .cyber-btn:hover { background: white; box-shadow: 0 0 20px #39FF14; }
+        .glitch-overlay { background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(57, 255, 20, 0.05) 3px); pointer-events: none; }
     </style>
 </head>
-<body class="pb-10">
-    
-    <div class="fixed inset-0 grid-bg z-[-1] pointer-events-none opacity-50"></div>
+<body class="bg-hex-grid">
 
-    <!-- Nav -->
-    <nav class="fixed w-full z-50 top-0 glass-panel">
-        <div class="px-4 py-3 md:px-6 md:py-4 flex justify-between items-center max-w-7xl mx-auto">
-            <a href="index.html" class="text-xl md:text-2xl font-bold tracking-widest text-white flex items-center gap-2">
-                <i data-lucide="arrow-left" class="md:hidden w-5 h-5 text-gray-400"></i> 
-                <span class="cyber-text">UNITE <span class="text-[#39FF14]">GAMERS</span></span>
+    <nav class="fixed w-full z-50 top-0 bg-black/90 backdrop-blur-md border-b border-nexus-green/20">
+        <div class="px-6 py-4 flex justify-between items-center max-w-7xl mx-auto">
+            <a href="index.html" class="font-tech font-bold text-xl tracking-widest flex items-center gap-2">
+                NEXUS <span class="text-nexus-green neon-text">DIV_GAMING</span>
             </a>
-            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
-                <a href="index.html" class="hover:text-white transition">Inicio</a>
-                <a href="catalogo.html" class="hover:text-white transition">Catálogo</a>
-                <a href="condiciones.html" class="hover:text-white transition">Info/Legal</a>
-            </div>
-            <div class="flex gap-3 items-center">
-                 <a href="https://discord.gg/Aq3TjM4tJT" target="_blank" class="bg-[#5865F2] hover:bg-[#4752C4] text-white px-4 py-2 rounded-lg text-xs md:text-sm font-bold transition flex items-center gap-2">
-                    <i data-lucide="message-square" class="w-4 h-4"></i> <span class="hidden md:inline">Discord</span>
-                </a>
-                <button id="menu-btn" class="md:hidden p-2 rounded-full bg-white/10 text-white"><i data-lucide="menu" class="w-5 h-5"></i></button>
-            </div>
+            <a href="https://discord.gg/Aq3TjM4tJT" target="_blank" class="text-xs font-tech text-nexus-green border border-nexus-green/50 px-3 py-1 rounded hover:bg-nexus-green hover:text-black transition">
+                UNIRSE_SERVIDOR
+            </a>
         </div>
     </nav>
 
-    <!-- Menú Móvil Pro -->
-    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl menu-closed flex flex-col justify-center px-8 space-y-6 md:hidden">
-        <div class="absolute top-5 right-5"><button id="close-menu" class="p-2 bg-white/10 rounded-full text-white"><i data-lucide="x" class="w-6 h-6"></i></button></div>
-        <div class="text-center mb-4"><span class="cyber-text text-2xl">UNITE <span class="text-[#39FF14]">GAMERS</span></span></div>
-        <a href="index.html" class="p-4 rounded-xl flex items-center gap-4 text-xl font-bold text-gray-300 hover:text-white border border-white/10"><i data-lucide="home"></i> Inicio</a>
-        <a href="catalogo.html" class="p-4 rounded-xl flex items-center gap-4 text-xl font-bold text-gray-300 hover:text-white border border-white/10"><i data-lucide="shopping-bag"></i> Catálogo</a>
-        <a href="condiciones.html" class="p-4 rounded-xl flex items-center gap-4 text-xl font-bold text-gray-300 hover:text-white border border-white/10"><i data-lucide="info"></i> Info & Legal</a>
-    </div>
+    <main class="pt-24 px-4 max-w-7xl mx-auto pb-20 relative">
+        <div class="fixed inset-0 glitch-overlay z-0"></div>
 
-    <main class="pt-24 px-4 max-w-7xl mx-auto space-y-16 pb-20">
-        
-        <!-- Header -->
-        <div class="text-center py-10">
-            <h1 class="text-5xl md:text-7xl font-black cyber-text text-transparent bg-clip-text bg-gradient-to-r from-[#39FF14] to-emerald-600 tracking-wider mb-4">
-                ARSENAL DIGITAL
+        <div class="text-center py-16 relative z-10">
+            <h1 class="text-6xl md:text-8xl font-black font-tech text-white mb-4 tracking-tighter">
+                ARSENAL <span class="text-transparent bg-clip-text bg-gradient-to-b from-nexus-green to-transparent">DIGITAL</span>
             </h1>
-            <p class="text-lg text-gray-400 max-w-2xl mx-auto">
-                La forma más rápida y segura de conseguir tus juegos, skins y monedas. Todo a través de nuestro servidor de Discord.
+            <p class="text-gray-400 font-mono text-sm max-w-lg mx-auto border-l border-nexus-green pl-4 text-left">
+                // ACCESO SEGURO A MONEDAS VIRTUALES, SKINS Y HARDWARE.
+                <br>// PROTOCOLO: SISTEMA DE TICKETS EN DISCORD.
             </p>
-            <a href="https://discord.gg/Aq3TjM4tJT" class="inline-block mt-8 px-8 py-4 bg-[#39FF14] hover:bg-green-400 text-black font-black rounded-xl transition transform hover:scale-105 shadow-[0_0_20px_rgba(57,255,20,0.4)]">
-                ¡UNIRME AHORA!
-            </a>
+            
+            <div class="mt-10 flex justify-center gap-4">
+                <a href="https://discord.gg/Aq3TjM4tJT" class="cyber-btn px-8 py-4 inline-block">
+                    Iniciar Discord
+                </a>
+            </div>
         </div>
 
-        <!-- ¿CÓMO FUNCIONA? -->
-        <section>
-            <h2 class="text-3xl font-bold text-center mb-10 cyber-text">¿CÓMO <span class="text-white/50">FUNCIONA?</span></h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Pasos -->
-                <div class="step-card p-6 rounded-2xl text-center hover:bg-white/5 transition">
-                    <div class="w-16 h-16 bg-[#5865F2]/20 rounded-full flex items-center justify-center mx-auto mb-4 text-[#5865F2]"><i data-lucide="message-circle" class="w-8 h-8"></i></div>
-                    <h3 class="text-xl font-bold mb-2">1. Únete al Servidor</h3><p class="text-sm text-gray-400">Accede a nuestra comunidad exclusiva.</p>
-                </div>
-                <div class="step-card p-6 rounded-2xl text-center hover:bg-white/5 transition">
-                    <div class="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-yellow-500"><i data-lucide="ticket" class="w-8 h-8"></i></div>
-                    <h3 class="text-xl font-bold mb-2">2. Abre un Ticket</h3><p class="text-sm text-gray-400">Ve al canal de soporte y crea un ticket.</p>
-                </div>
-                <div class="step-card p-6 rounded-2xl text-center hover:bg-white/5 transition">
-                    <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-green-500"><i data-lucide="shopping-cart" class="w-8 h-8"></i></div>
-                    <h3 class="text-xl font-bold mb-2">3. Pide tu Producto</h3><p class="text-sm text-gray-400">Dinos qué necesitas.</p>
-                </div>
-                <div class="step-card p-6 rounded-2xl text-center hover:bg-white/5 transition">
-                    <div class="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-purple-500"><i data-lucide="gamepad-2" class="w-8 h-8"></i></div>
-                    <h3 class="text-xl font-bold mb-2">4. ¡Recibe y Juega!</h3><p class="text-sm text-gray-400">Entrega rápida y segura.</p>
-                </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-20 relative z-10">
+            <div class="bg-black/50 border border-white/10 p-6">
+                <div class="text-nexus-green font-black text-4xl mb-2 opacity-50">01</div>
+                <h3 class="font-bold font-tech text-xl uppercase">Únete al Servidor</h3>
+                <p class="text-xs text-gray-500 mt-2">Entra al Discord de NEXUS.</p>
             </div>
-        </section>
+            <div class="bg-black/50 border border-white/10 p-6">
+                <div class="text-nexus-green font-black text-4xl mb-2 opacity-50">02</div>
+                <h3 class="font-bold font-tech text-xl uppercase">Crear Ticket</h3>
+                <p class="text-xs text-gray-500 mt-2">Ve al canal #soporte.</p>
+            </div>
+            <div class="bg-black/50 border border-white/10 p-6">
+                <div class="text-nexus-green font-black text-4xl mb-2 opacity-50">03</div>
+                <h3 class="font-bold font-tech text-xl uppercase">Especifica Pedido</h3>
+                <p class="text-xs text-gray-500 mt-2">Lista lo que requieres.</p>
+            </div>
+            <div class="bg-black/50 border border-white/10 p-6">
+                <div class="text-nexus-green font-black text-4xl mb-2 opacity-50">04</div>
+                <h3 class="font-bold font-tech text-xl uppercase">Recibe</h3>
+                <p class="text-xs text-gray-500 mt-2">Entrega digital instantánea.</p>
+            </div>
+        </div>
 
-        <!-- Grid de Juegos -->
-        <section>
-            <h2 class="text-3xl font-bold text-center mb-10 cyber-text">NUESTRO <span class="text-white/50">STOCK</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Fortnite -->
-                <div class="cyber-card rounded-2xl overflow-hidden relative h-80 group cursor-pointer">
-                    <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-purple-900/10 to-transparent">
-                        <model-viewer src="https://cdn.jsdelivr.net/gh/PIXLTikTok/mis-modelos-3d@main/battle_bus.glb" class="w-full h-full" camera-controls disable-zoom auto-rotate style="background-color: transparent;"></model-viewer>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full bg-black/80 backdrop-blur-sm p-6 border-t border-white/10">
-                        <div class="flex justify-between items-center">
-                            <div><h3 class="text-2xl font-bold cyber-text">FORTNITE</h3><p class="text-sm text-gray-400">Pavos & Skins</p></div>
-                            <a href="https://discord.gg/Aq3TjM4tJT" class="bg-[#39FF14] text-black font-bold px-4 py-2 rounded-lg">VER</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Roblox -->
-                <div class="cyber-card rounded-2xl overflow-hidden relative h-80 group cursor-pointer border-red-500/20 shadow-red-500/5">
-                    <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-red-900/10 to-transparent">
-                        <model-viewer src="https://cdn.jsdelivr.net/gh/PIXLTikTok/mis-modelos-3d@main/roblox-noob.glb" class="w-full h-full" camera-controls disable-zoom auto-rotate style="background-color: transparent;"></model-viewer>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full bg-black/80 backdrop-blur-sm p-6 border-t border-white/10">
-                        <div class="flex justify-between items-center">
-                            <div><h3 class="text-2xl font-bold cyber-text">ROBLOX</h3><p class="text-sm text-gray-400">Robux (Gamepass/Grupo)</p></div>
-                            <a href="https://discord.gg/Aq3TjM4tJT" class="bg-red-500 text-white font-bold px-4 py-2 rounded-lg">VER</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Consolas -->
-                <div class="cyber-card rounded-2xl overflow-hidden relative h-80 group cursor-pointer border-blue-500/20 shadow-blue-500/5">
-                    <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-blue-900/10 to-transparent">
-                        <model-viewer src="https://cdn.jsdelivr.net/gh/PIXLTikTok/mis-modelos-3d@main/xbox_controller-black.glb" class="w-full h-full" camera-controls disable-zoom auto-rotate style="background-color: transparent;"></model-viewer>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full bg-black/80 backdrop-blur-sm p-6 border-t border-white/10">
-                        <div class="flex justify-between items-center">
-                            <div><h3 class="text-2xl font-bold cyber-text">CONSOLAS</h3><p class="text-sm text-gray-400">Xbox / PS / PC</p></div>
-                            <a href="https://discord.gg/Aq3TjM4tJT" class="bg-blue-500 text-white font-bold px-4 py-2 rounded-lg">VER</a>
-                        </div>
-                    </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
+            <div class="cyber-card group h-96 flex flex-col items-center justify-center">
+                <div class="absolute inset-0 bg-purple-900/10 group-hover:bg-purple-900/20 transition"></div>
+                <model-viewer src="https://cdn.jsdelivr.net/gh/PIXLTikTok/mis-modelos-3d@main/battle_bus.glb" class="w-full h-full" camera-controls disable-zoom auto-rotate style="background:transparent;"></model-viewer>
+                <div class="absolute bottom-0 w-full p-6 bg-black/80 border-t border-white/10">
+                    <h3 class="font-tech text-2xl font-bold text-white">FORTNITE</h3>
+                    <p class="text-xs text-purple-400 font-mono">PAVOS // SKINS // PACKS</p>
                 </div>
             </div>
-        </section>
+
+            <div class="cyber-card group h-96 flex flex-col items-center justify-center border-red-500/20 hover:border-red-500">
+                <div class="absolute inset-0 bg-red-900/10 group-hover:bg-red-900/20 transition"></div>
+                <model-viewer src="https://cdn.jsdelivr.net/gh/PIXLTikTok/mis-modelos-3d@main/roblox-noob.glb" class="w-full h-full" camera-controls disable-zoom auto-rotate style="background:transparent;"></model-viewer>
+                <div class="absolute bottom-0 w-full p-6 bg-black/80 border-t border-white/10">
+                    <h3 class="font-tech text-2xl font-bold text-white">ROBLOX</h3>
+                    <p class="text-xs text-red-400 font-mono">ROBUX // GAMEPASS // GRUPOS</p>
+                </div>
+            </div>
+
+            <div class="cyber-card group h-96 flex flex-col items-center justify-center border-blue-500/20 hover:border-blue-500">
+                <div class="absolute inset-0 bg-blue-900/10 group-hover:bg-blue-900/20 transition"></div>
+                <model-viewer src="https://cdn.jsdelivr.net/gh/PIXLTikTok/mis-modelos-3d@main/xbox_controller-black.glb" class="w-full h-full" camera-controls disable-zoom auto-rotate style="background:transparent;"></model-viewer>
+                <div class="absolute bottom-0 w-full p-6 bg-black/80 border-t border-white/10">
+                    <h3 class="font-tech text-2xl font-bold text-white">HARDWARE</h3>
+                    <p class="text-xs text-blue-400 font-mono">CONTROLES // CONSOLAS // PC</p>
+                </div>
+            </div>
+        </div>
     </main>
+
     <script>
         lucide.createIcons();
-        const menuBtn = document.getElementById('menu-btn');
-        const closeMenu = document.getElementById('close-menu');
-        const mobileMenu = document.getElementById('mobile-menu');
-        function toggleMenu() { mobileMenu.classList.toggle('menu-closed'); mobileMenu.classList.toggle('menu-open'); }
-        menuBtn.addEventListener('click', toggleMenu);
-        closeMenu.addEventListener('click', toggleMenu);
     </script>
 </body>
 </html>
