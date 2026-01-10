@@ -1,25 +1,41 @@
-# Vanklein Ink - Tattoo Studio
+# Portfolio: rodricg30
 
-Sitio web oficial para Vanklein Ink.
+Este proyecto es un sitio web de portafolio de alto rendimiento, diseñado con un enfoque "Mobile First" y optimizado para una experiencia de usuario premium.
+
+## Tecnologías Utilizadas
+- **HTML5 Semántico**: Estructura limpia y optimizada para SEO.
+- **CSS3 Moderno**: Variables CSS, Flexbox, Grid y animaciones de alto rendimiento (GPU accelarated).
+- **Vanilla JavaScript**: Sin dependencias pesadas para asegurar la máxima velocidad de carga.
+- **Fuentes**: 'Outfit' de Google Fonts para una tipografía moderna.
 
 ## Estructura del Proyecto
+- `index.html`: Estructura principal.
+- `style.css`: Estilos globales, animaciones y diseño responsivo.
+- `main.js`: Lógica de interacciones (Menú, Cursor, Scroll Animations).
 
-- `index.html`: Página principal con la estructura del sitio.
-- `style.css`: Estilos visuales (diseño inspirado en minimalismo moderno).
-- `script.js`: Funcionalidad para el menú móvil y efectos de desplazamiento.
-- `assets/`: Carpeta que contiene las imágenes del sitio.
+## Cómo Desplegar en GitHub Pages
 
-## Cómo publicar en GitHub Pages
+1. Inicializa el repositorio si no lo has hecho:
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   ```
 
-1.  Crea un nuevo repositorio en GitHub.
-2.  Sube todos los archivos de esta carpeta al repositorio.
-3.  Ve a la pestaña **Settings** (Configuración) del repositorio.
-4.  Busca la sección **Pages** (Páginas) en la barra lateral izquierda.
-5.  En **Source** (Fuente), selecciona `main` (o `master`) y la carpeta `/ (root)`.
-6.  Haz clic en **Save** (Guardar).
-7.  ¡Listo! Tu sitio estará disponible en pocos minutos en el enlace que te proporcione GitHub.
+2. Crea un repositorio en GitHub con el nombre `rodricg30` (o `rodricg30.github.io` si es tu repo principal).
 
-## Próximos Pasos
+3. Vincula el repositorio remoto:
+   ```bash
+   git remote add origin https://github.com/TU_USUARIO/rodricg30.git
+   git branch -M main
+   git push -u origin main
+   ```
 
--   **WhatsApp**: Cuando tengas el número, abre `index.html` y busca la línea que dice `<!-- Waiting for WhatsApp number -->`. Cambia `href="#"` por `href="https://wa.me/TUNUMERO"`.
--   **Imágenes Reales**: Reemplaza las imágenes en la carpeta `assets/` con fotos reales de tus tatuajes y el estudio, manteniendo los nombres de archivo o actualizando el HTML.
+4. En GitHub, ve a **Settings** > **Pages**.
+5. En "Source", selecciona `Deploy from a branch`.
+6. Selecciona la rama `main` y guarda.
+
+¡Tu sitio estará en vivo en unos minutos!
+
+## Personalización
+- Para cambiar las imágenes del banner "Marquee", edita la sección `.marquee` en `index.html` y reemplaza los `<span>` con `<img>`.

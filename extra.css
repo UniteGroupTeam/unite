@@ -1,0 +1,167 @@
+/* --- Marquee Updates --- */
+.marquee-logo {
+    height: 60px;
+    /* Fixed height for uniformity */
+    width: auto;
+    /* Width adjusts automatically */
+    margin: 0 50px;
+    /* More breathing room */
+    filter: grayscale(100%) opacity(0.7);
+    /* Subtle inactive state */
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    object-fit: contain;
+}
+
+.marquee-logo:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.1);
+}
+
+/* --- Uniform Grid System --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    /* Wider minimum for premium feel */
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.item-card {
+    background: transparent;
+    /* Remove card bg for cleaner look */
+    border: none;
+    padding: 0;
+    transition: transform 0.4s var(--easing);
+    display: flex;
+    flex-direction: column;
+    group: item-card;
+    /* Concept for hover scoping */
+}
+
+/* --- The Visual Container (The "Box") --- */
+.item-visual {
+    width: 100%;
+    aspect-ratio: 4/3;
+    /* Enforce standard shape */
+    background-color: #0a0a0a;
+    /* Very dark grey, almost black */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.item-card:hover .item-visual {
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Image Handling within Box --- */
+.item-visual img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s var(--easing);
+}
+
+/* MODE 1: Logos (Default) - Centered, contained, padding */
+.item-visual.logo-mode {
+    padding: 40px;
+    /* Give logos space */
+}
+
+.item-visual.logo-mode img {
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.8;
+}
+
+.item-card:hover .item-visual.logo-mode img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+    /* Subtle zoom */
+}
+
+/* MODE 2: Projects (Websites) - Cover, Full Bleed */
+.item-visual.project-mode {
+    padding: 0;
+}
+
+.item-visual.project-mode img {
+    object-fit: cover;
+    object-position: top center;
+    /* Show the header/nav of the user's site */
+}
+
+.item-card:hover .item-visual.project-mode img {
+    transform: scale(1.05);
+    /* Zoom in effect */
+}
+
+/* --- Text Content --- */
+.item-content {
+    padding: 0 10px;
+}
+
+.item-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.item-content p {
+    font-size: 0.95rem;
+    color: var(--gray-light);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.card-link {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 2px;
+    transition: all 0.3s;
+    align-self: flex-start;
+}
+
+.card-link:hover {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+/* --- Page Headers Refinement --- */
+.page-header {
+    padding: 180px 5% 80px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.page-header h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: var(--gray-light);
+}
+
+/* --- Responsive fix for marquee on mobile --- */
+@media (max-width: 768px) {
+    .marquee-logo {
+        height: 40px;
+        margin: 0 20px;
+    }
+}
